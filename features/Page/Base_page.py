@@ -2,7 +2,7 @@ from selenium import webdriver
 
 
 class Browser(object):
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome('chromedriver.exe')
     driver.set_page_load_timeout(30)
     driver.maximize_window()
     

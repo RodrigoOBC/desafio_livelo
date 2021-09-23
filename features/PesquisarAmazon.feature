@@ -1,14 +1,10 @@
 #language: pt
 
-Funcionalidade: Pesquisar no Google
-  Sou um usuario e quero fazer uma pesquisa no google
+Funcionalidade: Gerenciar Pedido
+  Sou um cliente e desejo gerenciar o carrinho de compra
+  Adcionado, removendo e atualizando meu carrinho
 
-  Cenario: Pesquisar "Amazon" no google
-    Dado que acesso a pagina do google
-    Quando pesquiso por "Amazon"
-    Entao resultados relacionados ao "Amazon" são exibidos
-
-  Cenario: Pesquisar "Livro" na Amazon
-    Dado que acesso a pagina principal da amazon
-    Quando pesquiso "Livro" na Amazon
-    Entao livros vendidos são exibidos
+  Cenario: Adicionar produto ao carrinho
+    Dado que acesso a pagina da Livelo
+    Quando seleciono um produto
+    Entao o produto selecionado deve ser apresentado no carrinho
