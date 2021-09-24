@@ -19,5 +19,5 @@ Funcionalidade: Gerenciar Pedido
     E deve ter a quantidade de "<QTD>"
     Exemplos:
       | produto                                                               | voltagem | QTD |
-      | Cafeteira Elétrica Philco Ph30 Thermo 30 Xícaras - Aço Escovado/Preta | 110v     | 2   |
+      | Cafeteira Elétrica Philco Ph30 Thermo 30 Xícaras - Aço Escovado/Preta | 110v     | 1   |
       | Mini Grill e Sanduicheira Philco - Vermelho/Aço                       | 110v     | 5   |

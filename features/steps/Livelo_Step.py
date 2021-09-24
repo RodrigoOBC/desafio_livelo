@@ -29,12 +29,10 @@ def step_impl(context,text):
 def step_impl(context,text):
     LP.selecionar_opp(vol=text)
     LP.adicionar_elemento_ao_carrinho()
-    # LP.browser_clear()
 
 @when(u'defino a quantidade "{text}"')
 def step_impl(context,text):
     LP.somar_elemento(QTD=text)
-    #
 
 
 @then(u'o "{text}" deve ser apresentado no carrinho')
@@ -43,5 +41,7 @@ def step_impl(context,text):
 
 @then(u'deve ter a quantidade de "{text}"')
 def step_impl(context,text):
-    LP.verificar_QTD(QTD=text)
+    confirm = LP.verificar_QTD(QTD=text)
     LP.browser_clear()
+    assert confirm
+

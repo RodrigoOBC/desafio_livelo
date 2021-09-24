@@ -45,9 +45,16 @@ class LiveloPage(Browser):
 
     def adicionar_elemento_ao_carrinho(self):
         try:
-            self.driver.find_element(By.ID, 'cc-prodDetails-addToCart').click()
+            addcart = WebDriverWait(self.driver, 60).until(
+                EC.element_to_be_clickable(
+                    (By.ID, 'cc-prodDetails-addToCart')))
+            addcart.click()
+
             self.driver.find_element(By.ID, 'btn-authorizeCoookies').click()
-            self.driver.find_element(By.ID, 'cc-prodDetails-refusePriceClubeDiscount').click()
+            recusar = WebDriverWait(self.driver, 60).until(
+                EC.element_to_be_clickable(
+                    (By.ID, 'cc-prodDetails-refusePriceClubeDiscount')))
+            recusar.click()
 
             element = WebDriverWait(self.driver, 60).until(
                 EC.presence_of_element_located((By.ID, f'ctaCheckout')))
@@ -91,13 +98,24 @@ class LiveloPage(Browser):
             return True
         else:
             while (QTD > X):
+                espera = WebDriverWait(self.driver, 60).until(
+                    EC.invisibility_of_element_located((By.XPATH,
+                                                        '/html/body/div[4]')))
                 soma = WebDriverWait(self.driver, 60).until(
                     EC.presence_of_element_located((By.XPATH, '/html/body/div[7]/main/div[1]/div[2]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[2]/div/div[2]/div/span[3]')))
                 soma.click()
+                espera = WebDriverWait(self.driver, 60).until(
+                    EC.invisibility_of_element_located((By.XPATH,
+                                                        '/html/body/div[4]')))
+                print(X)
                 X += 1
 
     def verificar_QTD(self, QTD):
+        espera = WebDriverWait(self.driver, 60).until(
+            EC.invisibility_of_element_located((By.XPATH,
+                                                '/html/body/div[4]')))
         valor = self.driver.find_element(By.CLASS_NAME, 'cart-list__value-qnt').text
+        print(valor)
         if int(QTD) == int(valor):
             return True
         else:
