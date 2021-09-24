@@ -12,18 +12,20 @@ def step_impl(context):
 def step_impl(context):
     confirm = LiveloPage().procurar_elemento()
     assert confirm
-    LiveloPage().colocar_elemento_carrinho()
+    LP.colocar_elemento_carrinho()
 
 @then(u'o produto selecionado deve ser apresentado no carrinho')
 def step_impl(context):
-    confirm = LiveloPage().verificar_elemento_carrinho()
+    confirm = LP.verificar_elemento_carrinho()
+    LP.browser_clear()
     assert confirm
+
 
 @when(u'seleciono "{text}"')
 def step_impl(context,text):
     confirm = LP.procurar_elemento(name=text)
     assert confirm
-    LiveloPage().selecionar_Produto(name=text)
+    LP.selecionar_Produto(name=text)
 
 @when(u'defino as configuração para "{text}"')
 def step_impl(context,text):
@@ -45,3 +47,19 @@ def step_impl(context,text):
     LP.browser_clear()
     assert confirm
 
+
+@when(u'o produto deve ser apresentado no carrinho')
+def step_impl(context):
+    confirm = LP.verificar_elemento_carrinho(name='Mini Grill e Sanduicheira Philco - Vermelho/Aço')
+    assert confirm
+
+@when(u'Removo o Produto do carrinho')
+def step_impl(context):
+    LP.remover_produto()
+
+@then(u'o produto selecionado não deve ser apresentado no carrinho')
+def step_impl(context):
+    confirm = LP.verificar_elemento_removido_carrinho()
+    LP.browser_clear()
+    LP.browser_quit()
+    assert confirm
